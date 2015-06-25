@@ -37,9 +37,7 @@ res.send("Email has been sent successfully");
    // Sending Emails with SMTP, Configuring SMTP settings
 
     /*var smtpTransport = nodemailer.createTransport("SMTP",{
-             host: "smtp.gmail.com", // hostname
-    secureConnection: true, // use SSL
-    port: 465, // port for secure SMTP
+         service: "Hotmail",
             auth: {
                  user: "rohit0kumar@hotmail.com",
                  pass: "['YourHotmailPassword']"
