@@ -23,16 +23,30 @@ app.get('/',function(req,res){
 
 // sending mail function
 app.post('/send', function(req, res){
-        //configuring SMTP settings
-    var smtpTransport = nodemailer.createTransport("SMTP",{
-            service: "Hotmail",
+
+// Sending Email Without SMTP
+nodemailer.mail({
+    from: "Node Emailer ✔ <hi@iamrohit.in>", // sender address
+    to: req.body.email, // list of receivers
+    subject: req.body.subject+" ✔", // Subject line
+    //text: "Hello world ✔", // plaintext body
+    html: "<b>"+req.body.description+"</b>" // html body
+});
+res.send("Email has been sent successfully");
+        
+   // Sending Emails with SMTP, Configuring SMTP settings
+
+    /*var smtpTransport = nodemailer.createTransport("SMTP",{
+             host: "smtp.gmail.com", // hostname
+    secureConnection: true, // use SSL
+    port: 465, // port for secure SMTP
             auth: {
                  user: "rohit0kumar@hotmail.com",
-                 pass: "[YourHotmailPassword]"
+                 pass: "['YourHotmailPassword']"
             }
         });
         var mailOptions = {
-            from: "Iamchat ✔ <hi@iamrohit.in>", // sender address
+            from: "Node Emailer ✔ <hi@iamrohit.in>", // sender address
             to: req.body.email, // list of receivers
             subject: req.body.subject+" ✔", // Subject line
             //text: "Hello world ✔", // plaintext body
@@ -42,9 +56,9 @@ app.post('/send', function(req, res){
         if(error){
              res.send("Email could not sent due to error: "+error);
         }else{
-             res.send("Email hase been sent successfully");
+             res.send("Email has been sent successfully");
         } 
-    }); 
+    }); */
 });
 
 // Starting server
